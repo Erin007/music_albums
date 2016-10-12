@@ -26,8 +26,9 @@ class ArtistControllerTest < ActionController::TestCase
   end
 
   test "should be able to create an artist" do
-    post :create
-    assert_response :success
+    post_params = {artist: {name: "Regina Spektor"}}
+    post :create, post_params
+    assert_response :redirect
   end
 
   test "should be able to update an artist" do
