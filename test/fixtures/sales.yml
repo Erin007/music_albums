@@ -1,11 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  purchase_date: 2016-10-12 08:03:11
-  album_id: 
+one: #row one in the databse
+  purchase_date: 2016-10-12 08:03:11 #name of the field: value for that field
+  album_id: #if the value is blank then the record is nil, you can also reference other fields from other objects here like this
+  #album_id: bounce  Rails knows to look in the fixture table for bounce and find the album_id (a number) It's like Sale.new and giving it all of these parameters. 
   amount: 9.99
 
 two:
   purchase_date: 2016-10-12 08:03:11
-  album_id: 
+  album_id:
   amount: 9.99
