@@ -31,14 +31,27 @@ class ArtistControllerTest < ActionController::TestCase
     assert_response :redirect
   end
 
-  test "should be able to update an artist" do
+  test "Creating an artist should change the number of artists" do
+    assert_difference("Artist.count", 1) do
+      post_params = {artist: {name: "Regina Spektor"}}
+      post :create, post_params
+    end
+  end
+
+  test "Should be able to update an artist" do
     patch :update,  {id: 1 }
     assert_response :success
   end
 
-  test "should be able to delete an artist" do
-    delete :destroy,  {id: 1 }
-    assert_response :success
+  test "Should be able to delete Bonjovi" do
+    delete :destroy,  {id: artists(:bonjovi).id }
+    assert_response :redirect
+  end
+
+  test "Deleting Bonjovi should change the number of artists" do
+    assert_difference("Artist.count", -1) do
+      delete :destroy,  {id: artists(:bonjovi).id }
+    end
   end
 
 end

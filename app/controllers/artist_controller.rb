@@ -1,4 +1,9 @@
 class ArtistController < ApplicationController
+
+  def artist
+    @artist ||= Artist.find(params[:id].to_i)
+  end
+
   def index
   end
 
@@ -15,7 +20,7 @@ class ArtistController < ApplicationController
   def create
     @artist =Artist.new
     @artist.name = params[:artist][:name]
-    
+
     if @artist.save
       redirect_to :action => "show", :id => @artist.id
     end
@@ -26,5 +31,12 @@ class ArtistController < ApplicationController
   end
 
   def destroy
+    artist.destroy
+    redirect_to artist_path
   end
+
+private
+ def artist_params
+   params.require(:artist).permit( :name )
+ end
 end
